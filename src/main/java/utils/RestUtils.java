@@ -1,7 +1,6 @@
 package utils;
 
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -10,7 +9,6 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class RestUtils {
-
     //create a request using specBuilder
     public static RequestSpecification getRequestSpecifications(String baseUrl,
                                                                 String basePath){
@@ -30,7 +28,10 @@ public class RestUtils {
     }
     //get the response from request specbuilder and build the response
     //then method can be used on api call to validate response body
-    public static Response getData(RequestSpecification requestSpec, String path, Map<String, String> queryParams){
+    public static Response getData(RequestSpecification requestSpec, PathBuilderUtils pathBuilder, Map<String, String> queryParams){
+        //get path value from enum
+        String path = pathBuilder.getPath();
+
         try {
 
             if (!queryParams.isEmpty()){
