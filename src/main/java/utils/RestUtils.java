@@ -28,4 +28,19 @@ public class RestUtils {
             return null;
         }
     }
+    //get the response from request specbuilder and build the response
+    //then method can be used on api call to validate response body
+    public static Response getData(RequestSpecification requestSpec, String path, Map<String, String> queryParams){
+        try {
+
+            if (!queryParams.isEmpty()){
+                requestSpec.queryParams(queryParams).log().all();
+            }
+
+            return given().spec(requestSpec).get(path);
+        } catch (Exception e){
+            System.out.println("Error occurred while trying to get data from Cocktail DB: " + e.getMessage());
+            return null;
+        }
+    }
 }
