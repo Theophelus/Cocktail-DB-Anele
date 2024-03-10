@@ -5,7 +5,7 @@ package model;
  this can be expanded and the project grows
  */
 
-public class FeatureData {
+public class FeatureDataModel {
     private String cocktailDbEndpoint;
     private String cocktailDbBasePath;
 
