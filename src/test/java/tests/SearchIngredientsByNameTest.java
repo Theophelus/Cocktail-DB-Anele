@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static org.testng.Assert.*;
+
 public class SearchIngredientsByNameTest {
 
 
@@ -29,12 +31,36 @@ public class SearchIngredientsByNameTest {
         assert ingredients != null;
         Assert.assertEquals(ingredients.getId(), "1");
         Assert.assertEquals(ingredients.getName(), ingredientsName);
-        Assert.assertTrue(ingredients.getDescription().contains(descriptions),
+        assertTrue(ingredients.getDescription().contains(descriptions),
                 "Provided description does not contain provided text: '"+descriptions+"'  ");
         Assert.assertEquals(ingredients.getType(), ingredientsName);
         Assert.assertEquals(ingredients.getAlcoholContent(), "Yes");
         Assert.assertEquals(ingredients.getAbv(), "40");
 
+    }
+
+    @Test(description = "Verify an ingredient is non-alcoholic, Alcohol is null and ABV is null")
+    public void verifyIfIngredientIsNonAlcoholicVerifyResponse() {
+
+        //define non-alcoholic ingredient variable
+        String nonAlcoholicIngredient = "Orange";
+        //get searchByName method from
+        Ingredient ingredient = SearchIngredients.searchIngredientByName(nonAlcoholicIngredient);
+        /*
+            check provided method if it's value is null,
+            if true, assert, alcohol = no and ABV = null
+         */
+        assert ingredient != null;
+        if (ingredient.getName().equalsIgnoreCase("No")) {
+
+            assertTrue(ingredient.getAlcoholContent().equalsIgnoreCase("No"));
+            assertTrue(ingredient.getAbv().equalsIgnoreCase("null"),
+                    "ABV has value: '" + ingredient.getAbv() + "' ");
+
+        } else{
+            assertTrue(ingredient.getName().equalsIgnoreCase(nonAlcoholicIngredient),
+                    "Provided ingredient is alcoholic");
+    }
     }
 
 }
