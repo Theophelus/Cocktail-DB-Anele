@@ -6,8 +6,9 @@ import model.DrinkCocktails;
 import model.FeatureDataModel;
 import model.Ingredients;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class DataFileReaderUtils {
 
@@ -58,5 +59,12 @@ public class DataFileReaderUtils {
 
             return null;
         }
+    }
+
+    /*
+        add a method to read json schema for validating with json response
+     */
+    public static String readJsonSchema(String filePath) throws IOException {
+        return new String(Files.readAllBytes(Paths.get("src/test/resources/data/", filePath)));
     }
 }
