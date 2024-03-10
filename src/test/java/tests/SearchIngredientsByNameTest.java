@@ -89,5 +89,17 @@ public class SearchIngredientsByNameTest {
         }
     }
 
+    @Test(description = "Verify is a user is able to search by a name that does not exists in Cocktail DB Api.")
+    public void userShouldBeAbleToSearchWithIngredientThatDoesNotExists() {
+        //ingredient that does not exist variable
+        String ingredientDoesNotExists = "ifeiuribeinfwew";
+        //get searchByName method from
+        Ingredient ingredient = SearchIngredients.searchIngredientByName(ingredientDoesNotExists);
+        /*
+            for ingredients that does not exist, ingredients should be null
+         */
+        assertNull(ingredient, "Ingredient should be null for ingredients that does not exists: '" + ingredientDoesNotExists + "'");
+
+    }
 
 }

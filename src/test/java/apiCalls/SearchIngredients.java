@@ -53,17 +53,25 @@ public class SearchIngredients {
         ingredient.put("i", strIngredient);
         //get the response
         Response httpResponse = getIngredientsByName(ingredient);
+        //check if response is a success
+        if (httpResponse.getStatusCode() !=200){
+            return null;
+        }
         //deserialize http response
         Ingredients deserializeJsonResponse = DataFileReaderUtils.deserializeJsonResponse(httpResponse);
-
         //get the list of ingredients
         assert deserializeJsonResponse != null;
         List<Ingredient> ingredients = deserializeJsonResponse.getIngredients();
 
+        //adding a condition when the list is empty
+        if (ingredient.isEmpty() || ingredients ==null) {
+            return null;
+        }
+
         // get filter ingredient from list
-        if (!ingredients.isEmpty()){
-            for (Ingredient element: ingredients){
-                if (element.getName().equalsIgnoreCase(strIngredient)){
+        if (!ingredients.isEmpty()) {
+            for (Ingredient element : ingredients) {
+                if (element.getName().equalsIgnoreCase(strIngredient)) {
                     System.out.println("found:" + element.getName());
                     return element;
                 }
@@ -74,4 +82,5 @@ public class SearchIngredients {
         System.out.println("Ingredient not found: " + strIngredient);
         return null;
     }
+
 }
