@@ -18,7 +18,7 @@
         <jacksonVersion>2.16.1</jacksonVersion>
         <jsonVersion>20240303</jsonVersion>
         <jsonSchemaValidator>5.4.0</jsonSchemaValidator>
-        <allurerePorts>2.25.0</allurerePorts>
+        <allurerReports>2.25.0</allurerReports>
     </properties>
 
     <dependencies>
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
-            <version>${allurerePorts}</version>
+            <version>${allurerReports}</version>
         </dependency>
     </dependencies>
 
