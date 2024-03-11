@@ -18,6 +18,7 @@
         <jacksonVersion>2.16.1</jacksonVersion>
         <jsonVersion>20240303</jsonVersion>
         <jsonSchemaValidator>5.4.0</jsonSchemaValidator>
+        <allurerePorts>2.25.0</allurerePorts>
     </properties>
 
     <dependencies>
@@ -60,6 +61,12 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
             <version>${jsonSchemaValidator}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>${allurerePorts}</version>
         </dependency>
 
 
