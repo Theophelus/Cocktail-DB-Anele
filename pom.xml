@@ -17,6 +17,7 @@
         <log4jVersion>2.23.0</log4jVersion>
         <jacksonVersion>2.16.1</jacksonVersion>
         <jsonVersion>20240303</jsonVersion>
+        <jsonSchemaValidator>5.4.0</jsonSchemaValidator>
     </properties>
 
     <dependencies>
@@ -52,6 +53,13 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>${jsonVersion}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${jsonSchemaValidator}</version>
         </dependency>
 
 
