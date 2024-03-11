@@ -37,18 +37,20 @@ public class SearchingByCocktail extends BaseTest {
      */
 
     public static Drink searchCockTailByName(String cocktail){
-
         //regEx to validate string before searching
-        String regEx = "[A-Z]\\w*(\\s\\w+)";
-        if (!cocktail.matches(regEx)){
+        String regExs= "^[A-Z].*";
+        String current;
+        if (!cocktail.matches(regExs)) {
             System.out.println("Cocktail name does not meet validation: Cocktail must start with " +
                     " a capital letter");
             return null;
+        }  else {
+            current = cocktail;
         }
 
         //define a map to hold query params
         Map<String, String> drinkBuilder = new HashMap<>();
-        drinkBuilder.put("s", cocktail);
+        drinkBuilder.put("s", current);
         //get http response
         Response httpResponse = getCocktailResponse(drinkBuilder);
         //validate status code
@@ -57,8 +59,9 @@ public class SearchingByCocktail extends BaseTest {
         }
         //deserialize http response into Cocktail drink
         DrinkCocktails drinkCocktails = DataFileReaderUtils.cockDeserializeJsonResponse(httpResponse);
-        //get the list of cocktails
         assert drinkCocktails != null;
+
+        //get the list of cocktails
         List<Drink> drinksList = drinkCocktails.getDrinks();
         //If the cocktail does not exist in the cocktail DB, the API shall return drinks as null
         if (drinkBuilder.isEmpty() || drinksList ==null){
@@ -67,12 +70,13 @@ public class SearchingByCocktail extends BaseTest {
         //filter drinks a get the one looking for
         if (!drinksList.isEmpty()){
             for (Drink drink: drinksList){
-                if (drink.getStrDrink().equals(cocktail)){
+                String currentDrink = drink.getStrDrink();
+                if (currentDrink != null && drink.getStrDrink().equalsIgnoreCase(current)){
                     return drink;
                 }
             }
         }
-        System.out.println("Cocktail not found: " + cocktail);
+        System.out.println("Cocktail not found: " + current);
         return null;
     }
 }
