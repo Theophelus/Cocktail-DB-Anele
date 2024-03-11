@@ -35,7 +35,6 @@ public class SearchByCocktailTests {
                 .statusCode(200)
                 .body(JsonSchemaValidator
                 .matchesJsonSchema(readJsonSchema(cocktailJsonSchema)));
-
     }
 //
 //    @Test(description = "Verify user can search cocktails by name using Cocktail DB API")
