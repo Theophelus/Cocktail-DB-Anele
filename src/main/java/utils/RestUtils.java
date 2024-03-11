@@ -1,5 +1,6 @@
 package utils;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -28,46 +29,24 @@ public class RestUtils {
     }
     //get the response from request specbuilder and build the response
     //then method can be used on api call to validate response body
-    public static Response getData(RequestSpecification requestSpec, PathBuilderUtils pathBuilder, Map<String, String> queryParams){
+    public static Response getData(RequestSpecification requestSpec,
+                                   PathBuilderUtils pathBuilder, Map<String, String> queryParams){
         //get path value from enum
         String path = pathBuilder.getPath();
         try {
             if (!queryParams.isEmpty()){
                 requestSpec.queryParams(queryParams)
-                        .header("Content-type","application/json");
+                        .header("Content-Type","application/json");
             }
 
             return given()
                     .spec(requestSpec)
+                    .when()
+                    //adding allure report filters
+                    .filter(new AllureRestAssured())
                     .get(path);
 
         } catch (Exception e){
-            System.out.println("Error occurred while trying to get data from Cocktail DB: " + e.getMessage());
-            return null;
-        }
-    }
-
-    /*
-        add method overload getData with params, take same number of params(requestSpec, PathBuilder, params)
-        create the request and return a response
-     */
-    public static Response getData(RequestSpecification requestSpec,
-                                   PathBuilderUtils pathBuilder, String params) {
-        //get path value for search
-        String path = pathBuilder.getPath() + "i";
-
-        try {
-            if (!params.isEmpty()) {
-                requestSpec.param(params)
-                        .header("Content-Type", "application");
-            }
-
-            //build the response
-            return given()
-                    .spec(requestSpec)
-                    .get(path);
-
-        } catch (Exception e) {
             System.out.println("Error occurred while trying to get data from Cocktail DB: " + e.getMessage());
             return null;
         }
