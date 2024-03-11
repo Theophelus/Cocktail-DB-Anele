@@ -17,7 +17,7 @@ import static utils.PathBuilderUtils.SEARCH;
 import static utils.PathBuilderUtils.valueOf;
 import static utils.RestUtils.getData;
 
-public class SearchingByCocktail extends BaseTest {
+public class SearchingCocktailByName extends BaseTest {
 
     static String baseUrl = dataFromJsonDataFile.getCocktailDbEndpoint();
     static String basePath = dataFromJsonDataFile.getCocktailDbBasePath();

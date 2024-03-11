@@ -1,5 +1,6 @@
 package apiCalls;
 
+import base.BaseTest;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import model.Ingredient;
@@ -13,15 +14,14 @@ import java.util.Map;
 import java.util.Objects;
 
 import static utils.PathBuilderUtils.*;
-import static base.BaseTest.dataFromJsonDataFile;
 import static utils.RestUtils.getData;
 
-public class SearchIngredients {
+public class SearchIngredientsByName extends BaseTest {
 
      static String baseUrl = dataFromJsonDataFile.getCocktailDbEndpoint();
     static String basePath = dataFromJsonDataFile.getCocktailDbBasePath();
 
-    public static Response getIngredientsByName(Map<String, String> queryParams) {
+    public static Response getIngredientsResponse(Map<String, String> queryParams) {
         //Build the request
         RequestSpecification httpRequest = RestUtils.getRequestSpecifications(baseUrl, basePath);
 
@@ -31,18 +31,6 @@ public class SearchIngredients {
 
         return Objects.requireNonNull(getData(httpRequest, SEARCH, queryParams));
     }
-
-    public static Response getIngredientsByName(String params){
-        RequestSpecification httpRequest = RestUtils.getRequestSpecifications(baseUrl, basePath);
-
-        if (httpRequest == null){
-            throw new  RuntimeException("HTTP Specification is null");
-        }
-        System.out.println("Response body{}: " + Objects.requireNonNull(getData(httpRequest, SEARCH, params)).getBody().asString());
-        return getData(httpRequest, SEARCH, params);
-
-    }
-
     /*
         Adding the method to search ingredient by name()
         and return ingredient if found else null of Ingredient not found
@@ -52,7 +40,7 @@ public class SearchIngredients {
         Map<String, String> ingredient = new HashMap<>();
         ingredient.put("i", strIngredient);
         //get the response
-        Response httpResponse = getIngredientsByName(ingredient);
+        Response httpResponse = getIngredientsResponse(ingredient);
         //check if response is a success
         if (httpResponse.getStatusCode() !=200){
             return null;
@@ -77,10 +65,8 @@ public class SearchIngredients {
                 }
             }
         }
-
         //return null of ingredient not round
         System.out.println("Ingredient not found: " + strIngredient);
         return null;
     }
-
 }
