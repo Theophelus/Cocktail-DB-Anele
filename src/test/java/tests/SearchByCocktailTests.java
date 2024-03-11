@@ -13,8 +13,8 @@ import static utils.DataFileReaderUtils.readJsonSchema;
 
 public class SearchByCocktailTests {
 
-    @Test(description = "verify cocktail DB response contains cocktailJsonSchema properties")
-    public void validateCocktailJsonResponseAgainstJsonsSchema() throws IOException {
+    @Test(description = "Verify Cocktail DB response corresponds with cocktailJsonSchema properties")
+    public void validateCocktailJsonResponseAgainstJsonSchema() throws IOException {
 
         Map<String, String> margarita = new HashMap<>();
         margarita.put("s", "Margarita");
