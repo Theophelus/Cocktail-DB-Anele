@@ -1,6 +1,6 @@
 package tests;
 
-import apiCalls.SearchIngredients;
+import apiCalls.SearchIngredientsByName;
 import model.Ingredient;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,7 +18,7 @@ public class SearchIngredientsByNameTest {
         String descriptions = "Vodka is a distilled beverage " +
                 "composed primarily of water and ethanol";
         //get searchIngredientByName method
-        Ingredient ingredients = SearchIngredients.searchIngredientByName(ingredientsName);
+        Ingredient ingredients = SearchIngredientsByName.searchIngredientByName(ingredientsName);
         /*
             assert following attributes.
             Ingredient ID (string),
@@ -45,7 +45,7 @@ public class SearchIngredientsByNameTest {
         //define non-alcoholic ingredient variable
         String nonAlcoholicIngredient = "Orange";
         //get searchByName method from
-        Ingredient ingredient = SearchIngredients.searchIngredientByName(nonAlcoholicIngredient);
+        Ingredient ingredient = SearchIngredientsByName.searchIngredientByName(nonAlcoholicIngredient);
         /*
             check provided method if it's value is null,
             if true, assert, alcohol = no and ABV = null
@@ -70,7 +70,7 @@ public class SearchIngredientsByNameTest {
         //define non-alcoholic ingredient variable
         String alcoholicIngredient = "Vodka";
         //get searchByName method from
-        Ingredient ingredient = SearchIngredients.searchIngredientByName(alcoholicIngredient);
+        Ingredient ingredient = SearchIngredientsByName.searchIngredientByName(alcoholicIngredient);
         /*
             check provided ingredient contains yes
             if true, assert, alcohol = no and ABV = null
@@ -94,7 +94,7 @@ public class SearchIngredientsByNameTest {
         //ingredient that does not exist variable
         String ingredientDoesNotExists = "ifeiuribeinfwew";
         //get searchByName method from
-        Ingredient ingredient = SearchIngredients.searchIngredientByName(ingredientDoesNotExists);
+        Ingredient ingredient = SearchIngredientsByName.searchIngredientByName(ingredientDoesNotExists);
         /*
             for ingredients that does not exist, ingredients should be null
          */
