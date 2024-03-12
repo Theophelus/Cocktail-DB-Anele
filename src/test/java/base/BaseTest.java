@@ -7,6 +7,7 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import model.FeatureDataModel;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import utils.DataFileReaderUtils;
 
 public class BaseTest {
@@ -18,7 +19,7 @@ public class BaseTest {
         dataFromJsonDataFile = DataFileReaderUtils.getDataFile("data.json");
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void setup(){
         RestAssured.filters(new AllureRestAssured());
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
