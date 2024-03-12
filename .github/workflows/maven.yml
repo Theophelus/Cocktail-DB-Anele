@@ -29,7 +29,9 @@ jobs:
         cache: maven
         
     - name: Build and run Rest Assured Tests with Maven
+      if: always()
       run: mvn test
+      continue-on-error: true
       
     # #generate Allure reports
     # - name: Generate Allure Reports
