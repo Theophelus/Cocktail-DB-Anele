@@ -120,7 +120,7 @@
                 <configuration>
                     <reportVersion>${allureReports}</reportVersion>
                     <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
-                    <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
+<!--                    <reportDirectory>${project.build.directory}/allure-report</reportDirectory>-->
                 </configuration>
             </plugin>
         </plugins>
