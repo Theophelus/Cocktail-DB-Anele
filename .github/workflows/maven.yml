@@ -34,9 +34,9 @@ jobs:
       continue-on-error: true
       
     #generate Allure reports
-    - name: Generate Allure Reports
-      run: |
-        mvn allure: serve
+    # - name: Generate Allure Reports
+    #   run: |
+    #     mvn allure: serve
 
 
     - name: Get Allure history
