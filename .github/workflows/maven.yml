@@ -33,36 +33,36 @@ jobs:
       run: mvn test
       continue-on-error: true
       
-    #generate Allure reports
-    # - name: Generate Allure Reports
-    #   run: |
-    #     mvn allure: serve
+#    generate Allure reports
+    - name: Generate Allure Reports
+      run: |
+         mvn allure: serve
+
+#
+#    - name: Get Allure history
+#      uses: actions/checkout@v3
+#      if: always()
+#      continue-on-error: true
+#      with:
+#       ref: gh-pages
+#       path: gh-pages
 
 
-    - name: Get Allure history
-      uses: actions/checkout@v3
-      if: always()
-      continue-on-error: true
-      with:
-       ref: gh-pages
-       path: gh-pages
-
-
-    - name: Load test report history
-      uses: actions/checkout@v3
-      if: always()
-      continue-on-error: true
-      with:
-        ref: gh-pages
-        path: gh-pages
-
-    - name: Build test report
-      uses: simple-elf/allure-report-action@v1.7
-      if: always()
-      with:
-        gh_pages: gh-pages
-        allure_history: allure-history
-        allure_results: build/allure-results
+#    - name: Load test report history
+#      uses: actions/checkout@v3
+#      if: always()
+#      continue-on-error: true
+#      with:
+#        ref: gh-pages
+#        path: gh-pages
+#
+#    - name: Build test report
+#      uses: simple-elf/allure-report-action@v1.7
+#      if: always()
+#      with:
+#        gh_pages: gh-pages
+#        allure_history: allure-history
+#        allure_results: build/allure-results
 
     - name: Publish test report
       uses: peaceiris/actions-gh-pages@v3
@@ -71,26 +71,6 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: allure-history
-
-    # Archive results
-    # - name: Archive REST-Assured Allure test report
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: REST-assured-results
-    #     path: target/site/allure-maven
-
-    # - name: Upload-allure-report
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: Rest-assured-results
-    #     path: target/site/allure-maven
-#  With these adjustments, your workflow should generate Allure reports correctly and upload them as artifacts, making them available for further inspection or sharing.
-
-
-
-
-
-
 
 # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #    - name: Update dependency graph
