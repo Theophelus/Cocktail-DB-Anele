@@ -71,7 +71,6 @@ jobs:
         publish_dir: allure-history
 
     # Archive results
-
     # - name: Archive REST-Assured Allure test report
     #   uses: actions/upload-artifact@v3
     #   with:
