@@ -8,11 +8,9 @@
 
 name: Maven CI with Rest Assured
 
-#on:
-#  push:
-#    branches: [ "main" ]
-#  pull_request:
-#    branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
