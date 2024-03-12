@@ -40,10 +40,10 @@ public class RestUtils {
             }
 
             return given()
-                    .spec(requestSpec)
-                    .when()
                     //adding allure report filters
                     .filter(new AllureRestAssured())
+                    .spec(requestSpec)
+                    .when()
                     .get(path);
 
         } catch (Exception e){
