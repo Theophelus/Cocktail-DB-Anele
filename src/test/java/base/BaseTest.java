@@ -19,9 +19,10 @@ public class BaseTest {
         dataFromJsonDataFile = DataFileReaderUtils.getDataFile("data.json");
     }
 
-    @BeforeMethod
+    @BeforeClass
     public void setup(){
-        RestAssured.filters(new AllureRestAssured());
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+        RestAssured.filters(new RequestLoggingFilter(),
+                new ResponseLoggingFilter(),
+                new AllureRestAssured());
     }
 }

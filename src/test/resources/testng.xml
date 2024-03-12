@@ -3,7 +3,8 @@
 <suite name="cocktail DB API Rest Assured Automated Tests">
     <test thread-count="1" name="Search Ingredients By Name Tests Cases">
         <classes>
-            <class name="tests.SearchByCocktailTests"/> <!-- test case class-->
+            <class name="tests.SearchCocktailByNameTests"/> <!-- test case class-->
+            <class name="tests.SearchIngredientsByNameTest"></class>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
