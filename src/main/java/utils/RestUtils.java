@@ -42,7 +42,7 @@ public class RestUtils {
             return given()
                     .spec(requestSpec)
                     //adding allure report filters
-                    .filter(new AllureRestAssured())
+//                    .filter(new AllureRestAssured())
                     .when()
                     .get(path);
 

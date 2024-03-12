@@ -15,11 +15,6 @@ import static utils.DataFileReaderUtils.readJsonSchema;
 public class SearchCocktailByNameTests {
 
     @Test(description = "Verify Cocktail DB response corresponds with cocktailJsonSchema properties")
-    @Story("GET request with valid json response")
-    @Severity(SeverityLevel.NORMAL)
-    @Owner("Anele Tom")
-    @Link(name = "Website", url = " https://www.thecocktaildb.com/")
-    @Description("Test Description: Verify Cocktail DB response corresponds with cocktailJsonSchema properties")
     public void validateCocktailJsonResponseAgainstJsonSchema() throws IOException {
 
         Map<String, String> margarita = new HashMap<>();
