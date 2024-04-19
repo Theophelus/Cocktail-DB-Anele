@@ -12,17 +12,24 @@ import utils.DataFileReaderUtils;
 
 public class BaseTest {
     //define Feature Data object
-    public static FeatureDataModel dataFromJsonDataFile;
+    private static FeatureDataModel dataFromJsonDataFile;
 
     static
     {
+//        System.out.println("data file name:" +dataFromJsonDataFile.getCocktailDbBasePath());
         dataFromJsonDataFile = DataFileReaderUtils.getDataFile("data.json");
     }
 
     @BeforeClass
     public void setup(){
+        //filter for Allure reports
         RestAssured.filters(new RequestLoggingFilter(),
                 new ResponseLoggingFilter(),
                 new AllureRestAssured());
+    }
+
+
+    public static FeatureDataModel readJsonFile() {
+        return dataFromJsonDataFile;
     }
 }
