@@ -19,10 +19,11 @@ import static utils.RestUtils.getData;
 
 public class SearchingCocktailByName extends BaseTest {
 
-    static String baseUrl = dataFromJsonDataFile.getCocktailDbEndpoint();
-    static String basePath = dataFromJsonDataFile.getCocktailDbBasePath();
 
     public static Response getCocktailResponse(Map<String, String> queryParams) {
+        String baseUrl = readJsonFile().getCocktailDbBaseURL();
+        String basePath = readJsonFile().getCocktailDbBasePath();
+
         //Build the request
         RequestSpecification httpRequest = RestUtils.getRequestSpecifications(baseUrl, basePath);
 
@@ -58,7 +59,7 @@ public class SearchingCocktailByName extends BaseTest {
             return null;
         }
         //deserialize http response into Cocktail drink
-        DrinkCocktails drinkCocktails = DataFileReaderUtils.cockDeserializeJsonResponse(httpResponse);
+        DrinkCocktails drinkCocktails = DataFileReaderUtils.deserializeJsonResponse(httpResponse, DrinkCocktails.class);
         assert drinkCocktails != null;
 
         //get the list of cocktails
