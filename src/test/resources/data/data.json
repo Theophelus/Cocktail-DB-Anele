@@ -1,4 +1,4 @@
 {
-  "cocktailDbEndpoint": "http://www.thecocktaildb.com/",
+  "cocktailDbBaseURL": "http://www.thecocktaildb.com/",
   "cocktailDbBasePath": "api/json/v1/1/"
 }
